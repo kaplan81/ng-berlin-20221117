@@ -9,7 +9,7 @@ const mfe1WebpackConfig = {
   ...withModuleFederationPlugin({
     name: 'mfe1',
     exposes: {
-      './Component': './projects/mfe1/src/app/app.component.ts',
+      './AppComponent': './projects/mfe1/src/app/app.component.ts',
     },
     shared: {
       ...shareAll({
@@ -19,6 +19,15 @@ const mfe1WebpackConfig = {
       }),
     },
   }),
+  /**
+   * Fix reference:
+   * https://github.com/angular-architects/module-federation-plugin/issues/96#issuecomment-981896034
+   */
+  output: {
+    uniqueName: 'shell',
+    publicPath: 'auto',
+    scriptType: 'text/javascript',
+  },
 };
 
 // Uncomment for debugging.
