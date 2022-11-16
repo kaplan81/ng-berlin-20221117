@@ -19,15 +19,6 @@ const mfe1WebpackConfig = {
       }),
     },
   }),
-  /**
-   * Fix reference:
-   * https://github.com/angular-architects/module-federation-plugin/issues/96#issuecomment-981896034
-   */
-  output: {
-    uniqueName: 'shell',
-    publicPath: 'auto',
-    scriptType: 'text/javascript',
-  },
 };
 
 // Uncomment for debugging.
