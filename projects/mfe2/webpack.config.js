@@ -2,12 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
-/**
- * This config was inspired by this example by Zack Jackson.
- * https://github.com/module-federation/module-federation-examples/blob/master/bi-directional/app2/webpack.config.js
- */
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/main.js',
   mode: 'development',
   devServer: {
     static: {

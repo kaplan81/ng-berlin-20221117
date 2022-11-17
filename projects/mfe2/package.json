@@ -1,8 +1,8 @@
 {
-  "name": "react-webpack-setup",
+  "name": "mfe2",
   "version": "1.0.0",
-  "description": "Simple step by step walkthrough of setting up a React app with Webpack",
-  "main": "index.js",
+  "description": "Simple React app",
+  "main": "main.js",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack serve --mode development"
