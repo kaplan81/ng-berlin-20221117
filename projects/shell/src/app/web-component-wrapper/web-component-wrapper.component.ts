@@ -6,7 +6,6 @@ import {
   Component,
   ElementRef,
   inject,
-  Injector,
   ViewChild,
 } from '@angular/core';
 
@@ -21,7 +20,6 @@ import {
 export class WebComponentWrapperComponent implements AfterViewInit {
   @ViewChild('customElementHolder') customElementHolder!: ElementRef;
   #document: Document = inject(DOCUMENT);
-  #injector = inject(Injector);
 
   ngAfterViewInit(): void {
     this.loadSnippet();
@@ -35,15 +33,13 @@ export class WebComponentWrapperComponent implements AfterViewInit {
       exposedModule: './App',
     });
     if (this.customElementHolder !== undefined) {
-      console.log('this.customElementHolder', this.customElementHolder.nativeElement);
       try {
         const fragment: DocumentFragment = this.#document
           .createRange()
           .createContextualFragment(`<mfe2-element></mfe2-element>`);
         this.customElementHolder.nativeElement.appendChild(fragment);
-        console.log('this.customElementHolder', this.customElementHolder.nativeElement);
       } catch (error: unknown) {
-        console.error('Error while loading', error);
+        console.error('Error while loading snippet', error);
       }
     }
   }
