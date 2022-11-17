@@ -13,7 +13,10 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'output-dist'),
     },
-    port: 3000,
+    port: 4202,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
   output: {
     publicPath: 'auto',
@@ -37,6 +40,7 @@ module.exports = {
       exposes: {
         './App': './src/App',
       },
+      shared: [],
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
