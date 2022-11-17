@@ -9,6 +9,7 @@ const shellWebpackConfig = {
   ...withModuleFederationPlugin({
     remotes: {
       mfe1: 'http://localhost:4201/remoteEntry.js',
+      mfe2: 'http://localhost:3000/remoteEntry.js',
     },
     shared: {
       ...shareAll({

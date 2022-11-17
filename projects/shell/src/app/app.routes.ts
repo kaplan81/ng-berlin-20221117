@@ -11,4 +11,8 @@ export const routes: Routes = [
     path: 'mfe1',
     loadComponent: () => import('mfe1/AppComponent').then((m) => m.AppComponent),
   },
+  {
+    path: 'mfe2',
+    loadComponent: () => import('mfe2/App').then((m) => m.root),
+  },
 ];
