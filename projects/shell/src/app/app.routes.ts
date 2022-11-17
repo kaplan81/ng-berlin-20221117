@@ -13,6 +13,6 @@ export const routes: Routes = [
   },
   {
     path: 'mfe2',
-    loadComponent: () => import('mfe2/App').then((m) => m.root),
+    loadComponent: () => import('mfe2/App').then((m) => m.App),
   },
 ];
