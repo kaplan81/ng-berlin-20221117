@@ -14,5 +14,4 @@ class Mfe2Element extends HTMLElement {
     );
   }
 }
-
 customElements.define('mfe2-element', Mfe2Element);

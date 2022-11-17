@@ -34,7 +34,8 @@ module.exports = {
       name: 'mfe2',
       filename: 'remoteEntry.js',
       exposes: {
-        './App': './src/App',
+        // './App': './src/App',
+        './App': './src/bootstrap.js',
       },
       shared: [],
     }),
