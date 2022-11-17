@@ -33,7 +33,6 @@ module.exports = {
     },
   },
   module: {
-    // exclude node_modules
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -42,7 +41,6 @@ module.exports = {
       },
     ],
   },
-  // pass all js files through Babel
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
