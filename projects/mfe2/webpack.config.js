@@ -2,45 +2,44 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
+/**
+ * This config was inspired by this example by Zack Jackson.
+ * https://github.com/module-federation/module-federation-examples/blob/master/bi-directional/app2/webpack.config.js
+ */
 module.exports = {
   entry: './src/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'build'),
-  },
+  mode: 'development',
   devServer: {
     static: {
-      directory: path.join(__dirname, 'build'),
+      directory: path.join(__dirname, 'output-dist'),
     },
     port: 3000,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
-    },
+  },
+  output: {
+    publicPath: 'auto',
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js?$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        options: {
+          presets: ['@babel/preset-react'],
+        },
       },
     ],
   },
-  resolve: {
-    extensions: ['*', '.js', '.jsx'],
-  },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'public', 'index.html'),
-    }),
     new ModuleFederationPlugin({
       name: 'mfe2',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/App',
       },
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'public', 'index.html'),
     }),
   ],
 };
